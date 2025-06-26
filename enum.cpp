@@ -87,11 +87,20 @@ std::string trim(const std::string& str) {
 
 int main() {
     std::string input;
+    Day today = InvalidDay;
 
-    std::cout << "Input a day: ";
-    std::getline(std::cin, input);
+    //while loop until valid input
+    while (today == InvalidDay) {
+        std::cout << "Input a day: ";
+        std::getline(std::cin, input);
 
-    Day today = returnDay(uppercase(trim(input)));
+        today = returnDay(uppercase(trim(input)));
+
+        if (today == InvalidDay) {
+            std::cout << "Invalid input. Please try again." << std::endl;
+        }
+    }
+    
     printDay(today);
 
     return 0;
